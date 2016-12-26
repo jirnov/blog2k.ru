@@ -94,6 +94,8 @@ function update(dt) {
     mat4.rotateY(modelMatrix, radians(angle));
     // Поворачиваем объект вдоль X на 25 градусов
     mat4.rotateX(modelMatrix, radians(25));
+    // Поворачиваем объект вдоль Y на angle градусов
+    mat4.rotateZ(modelMatrix, radians(angle));
 
     // Угол поворота вдоль Y (30 градусов в секунду)
     angle += 30 * dt;
