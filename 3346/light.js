@@ -220,15 +220,17 @@ function main(canvasName) {
     specularMapUniform = gl.getUniformLocation(program, "u_specularMap");
     // Ссылка на u_lightPos
     lightPosId = gl.getUniformLocation(program, "u_lightPos");
- 
+
+    var scriptUrl = document.currentScript.src;
+
     // Создаем и загружаем текстуру с цветом
-    diffuseTex = loadTexture("/wp-content/uploads/2014/03/color.jpg");
+    diffuseTex = loadTexture("https://cdn.jsdelivr.net/gh/jirnov/blog2k.ru@latest/3346/color.jpg");
  
     // Создаем и загружаем текстуру с картой нормалей
-    normalMapTex = loadTexture("/wp-content/uploads/2014/03/normal.png");
+    normalMapTex = loadTexture("https://cdn.jsdelivr.net/gh/jirnov/blog2k.ru@latest/3346/normal.png");
  
     // Создаем и загружаем карту бликов
-    specularMapTex = loadTexture("/wp-content/uploads/2014/03/specular.jpg");
+    specularMapTex = loadTexture("https://cdn.jsdelivr.net/gh/jirnov/blog2k.ru@latest/3346/specular.jpg");
  
     // Вершины x, y, u, v
     var vertices = [
