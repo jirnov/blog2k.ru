@@ -2,6 +2,8 @@
 
     "use strict";
 
+    const {mat4} = glMatrix;
+
     // Исходники вершинного шейдера 
     const vertexShaderSource = [
         // Позиция вершины
@@ -58,10 +60,10 @@
     var program = 0;
 
     // Матрица транформации объекта
-    const modelMatrix = mat4.create();
+    var modelMatrix = mat4.create();
 
     // Матрица перспективной проекции камеры
-    const projMatrix = mat4.create();
+    var projMatrix = mat4.create();
 
     // Общая матрица, которая содержит modelMatrix и projMatrix
     var modelViewProjMatrix = mat4.create();
@@ -78,19 +80,19 @@
         // Обнуляем матрицу
         mat4.identity(modelMatrix);
         // Сдвинем объект вдоль Z на -7
-        mat4.translate(modelMatrix, [0, 0, -7.0]);
+        mat4.translate(modelMatrix, modelMatrix, [0, 0, -7.0]);
         // Поворачиваем объект вдоль Y на angle градусов
-        mat4.rotateY(modelMatrix, radians(angle));
+        mat4.rotateY(modelMatrix, modelMatrix, radians(angle));
         // Поворачиваем объект вдоль X на 25 градусов
-        mat4.rotateX(modelMatrix, radians(25));
+        mat4.rotateX(modelMatrix, modelMatrix, radians(25));
         // Поворачиваем объект вдоль Y на angle градусов
-        mat4.rotateZ(modelMatrix, radians(angle));
+        mat4.rotateZ(modelMatrix, modelMatrix, radians(angle));
 
         // Угол поворота вдоль Y (30 градусов в секунду)
         angle += 30 * dt;
 
         // Совместим две матрицы в одну
-        mat4.multiply(projMatrix, modelMatrix, modelViewProjMatrix);
+        mat4.multiply(modelViewProjMatrix, projMatrix, modelMatrix);
     }
 
     function drawFrame() {
@@ -168,7 +170,7 @@
         gl.viewport(0, 0, canvas.width, canvas.height);
 
         // Инициализация матрицы перспективной проекции
-        mat4.perspective(70, canvas.width / canvas.height, 0.1, 20.0, projMatrix);
+        projMatrix = mat4.perspective(projMatrix, radians(70), canvas.width / canvas.height, 0.1, 20.0);
 
         // Создаем и компилируем шейдер
         program = compileShader(vertexShaderSource, fragmentShaderSource);

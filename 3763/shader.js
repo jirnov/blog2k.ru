@@ -1,6 +1,10 @@
 (function() {
     "use strict";
 
+    const toRadian = glMatrix.glMatrix.toRadian;
+
+    const {mat4,vec3,mat3,vec2} = glMatrix;
+
     const vertexShaderSource = [
         "attribute vec3 a_Position;",
         "attribute vec2 a_TexCoord;",
@@ -198,7 +202,7 @@
             rotation -= 360;
         }
 
-        var a = glMatrix.toRadian(rotation);
+        var a = toRadian(rotation);
 
         mat4.identity(modelMatrix);
         mat4.rotate(modelMatrix, modelMatrix, a, vec3.fromValues(0, 1, 0));
@@ -376,7 +380,7 @@
 
         mat4.perspective(
             projMatrix,
-            glMatrix.toRadian(45),
+            toRadian(45),
             canvas.width / canvas.height,
             1,
             50);
