@@ -183,6 +183,7 @@ function loadTexture(url) {
     texture.image.onload = function() {
         handleLoadedTexture(texture);
     }
+    texture.image.crossOrigin = 'anonymous';
     texture.image.src = url;
     return texture;
 }
