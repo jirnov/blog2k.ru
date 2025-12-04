@@ -1,3 +1,4 @@
+(function() {
 "use strict";
  
 window.requestAnimFrame = (function() {
@@ -11,7 +12,7 @@ window.requestAnimFrame = (function() {
          };
 })();
  
-var vertexShaderSource = [
+const vertexShaderSource = [
     "attribute vec3 a_Position;",
     "attribute vec2 a_TexCoord;",
     "attribute vec3 a_Normal;",
@@ -44,7 +45,7 @@ var vertexShaderSource = [
     "}"
 ].join("\n");
  
-var fragmentShaderSource = [
+const fragmentShaderSource = [
     "precision lowp float;",
 
     "uniform sampler2D u_DiffuseTex;",
@@ -368,6 +369,7 @@ function loadTexture(url, minFilter, magFilter, repeatMode) {
     texture.image.onload = function() {
         handleLoadedTexture(texture);
     }
+    texture.image.crossOrigin = 'anonymous';
     texture.image.src = url;
     return texture;
 }
@@ -460,20 +462,22 @@ function main(canvasName) {
     render();
 }
 
+window.CubeDemo = {
+    startRender : function(canvasName) {
+        settings = new Settings();
 
-window.CubeDemo = window.CubeDemo || {};
-window.CubeDemo.startRender = function(canvasName) {
-    settings = new Settings();
+        var gui = new dat.GUI({autoPlace : false});
+        gui.add(settings, 'rotationSpeed', -90.0, 90.0);
+        gui.add(settings, 'ambient');
+        gui.add(settings, 'diffuse');
+        gui.add(settings, 'specular');
 
-    var gui = new dat.GUI({autoPlace : false});
-    gui.add(settings, 'rotationSpeed', -90.0, 90.0);
-    gui.add(settings, 'ambient');
-    gui.add(settings, 'diffuse');
-    gui.add(settings, 'specular');
+        var canvas = document.getElementById(canvasName);
+        var container = canvas.parentElement;
+        container.insertBefore(gui.domElement, canvas);
 
-    var canvas = document.getElementById(canvasName);
-    var container = canvas.parentElement;
-    container.insertBefore(gui.domElement, canvas);
-
-    main(canvasName);
+        main(canvasName);
+    }
 }
+
+})();
