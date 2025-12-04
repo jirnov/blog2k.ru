@@ -266,8 +266,8 @@ function render() {
     sphereUniforms.u_lightDir.value = lightDir;
 }
 
-window.TriangleDemo = window.TriangleDemo || {};
-window.TriangleDemo.startRender = function(canvasName) {
+window.SphereDemo = window.SphereDemo || {};
+window.SphereDemo.startRender = function(canvasName) {
     init(canvasName);
     render();
 }
