@@ -16,8 +16,7 @@ function colorToString(color) {
         return "#000000";
     }
     var c = color.toString(16);
-    return "#" + c + + c + c;
-
+    return "#" + c + "" + c + "" + c;
 }
 
 function render() {
