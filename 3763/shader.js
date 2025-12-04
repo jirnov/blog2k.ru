@@ -1,17 +1,6 @@
 (function() {
 "use strict";
  
-window.requestAnimFrame = (function() {
-  return window.requestAnimationFrame ||
-         window.webkitRequestAnimationFrame ||
-         window.mozRequestAnimationFrame ||
-         window.oRequestAnimationFrame ||
-         window.msRequestAnimationFrame ||
-         function(callback, element) {
-           window.setTimeout(callback, 1000.0/30.0);
-         };
-})();
- 
 const vertexShaderSource = [
     "attribute vec3 a_Position;",
     "attribute vec2 a_TexCoord;",
@@ -185,7 +174,7 @@ function createPlane(zDir, yDir)
 
 
 function render() {
-    requestAnimFrame(render);
+    requestAnimationFrame(render);
 
     var time = Date.now();
     var dt = 1000 / 30.0;
