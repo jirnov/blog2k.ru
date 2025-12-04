@@ -124,7 +124,9 @@ function render() {
 
 }
 
-window.startRender = function(canvasName) {
+window.BilinearDemo = window.BilinearDemo || {};
+
+window.BilinearDemo.startRender = function(canvasName) {
     canvas = document.getElementById(canvasName);
     context = canvas.getContext("2d");
 
