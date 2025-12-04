@@ -462,7 +462,7 @@ function main() {
 
 
 window.CubeDemo = window.CubeDemo || {};
-window.CubeDemo = function(canvasName) {
+window.CubeDemo.startRender = function(canvasName) {
     settings = new Settings();
 
     var gui = new dat.GUI({autoPlace : false});
