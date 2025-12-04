@@ -382,8 +382,8 @@ var Settings = function()
 }
 
 
-function main() {
-    var canvas = document.getElementById("webgl-canvas");
+function main(canvasName) {
+    var canvas = document.getElementById(canvasName);
  
     mat4.perspective(
         projMatrix, 
@@ -475,5 +475,5 @@ window.CubeDemo.startRender = function(canvasName) {
     var container = canvas.parentElement;
     container.insertBefore(gui.domElement, canvas);
 
-    main();
+    main(canvasName);
 }
