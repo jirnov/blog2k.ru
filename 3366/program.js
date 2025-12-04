@@ -171,8 +171,8 @@ function compileShader(vsSource, fsSource) {
     return program;
 }
  
-function startRender() {
-    var canvas = document.getElementById("webgl-canvas");
+function main(canvasName) {
+    var canvas = document.getElementById(canvasName);
  
     // Получаем gl context
     gl = canvas.getContext("experimental-webgl");
@@ -278,4 +278,10 @@ function startRender() {
  
     // Поехали!
     render();
+}
+
+
+window.PolyCubeDemo = window.PolyCubeDemo || {};
+window.PolyCubeDemo.startRender = function(canvasName) {
+    main(canvasName);
 }
