@@ -2,19 +2,6 @@
 
     "use strict";
 
-    // Обработка случаев, когда браузер не поддерживает 
-    // функцию requestAnimationFrame
-    window.requestAnimFrame = (function() {
-        return window.requestAnimationFrame ||
-            window.webkitRequestAnimationFrame ||
-            window.mozRequestAnimationFrame ||
-            window.oRequestAnimationFrame ||
-            window.msRequestAnimationFrame ||
-            function(callback, element) {
-                window.setTimeout(callback, 1000.0 / 30.0);
-            };
-    })();
-
     var vertexShaderSource = [
         "attribute vec2 a_position;",
         "attribute vec2 a_texCoord;",
@@ -71,7 +58,7 @@
 
 
     function render() {
-        requestAnimFrame(render);
+        requestAnimationFrame(render);
 
         if (!diffuseTex || !diffuseTex.loaded) {
             return;
