@@ -423,17 +423,17 @@ function main(canvasName) {
     enableSpecularUniform = gl.getUniformLocation(shaderProgram, "u_EnableSpecular");
 
     diffuseTexture = loadTexture(
-        "/wp-content/uploads/2016/04/diffuse.jpg",
+        "https://cdn.jsdelivr.net/gh/jirnov/blog2k.ru@latest/3763/diffuse.jpg",
         gl.LINEAR_MIPMAP_LINEAR, 
         gl.LINEAR);
 
     normalMapTexture = loadTexture(
-        "/wp-content/uploads/2016/04/normal.jpg",
+        "https://cdn.jsdelivr.net/gh/jirnov/blog2k.ru@latest/3763/normal.jpg",
         gl.LINEAR_MIPMAP_LINEAR, 
         gl.LINEAR);
 
     specularMapTexture = loadTexture(
-        "/wp-content/uploads/2016/04/specular.jpg", 
+        "https://cdn.jsdelivr.net/gh/jirnov/blog2k.ru@latest/3763/specular.jpg", 
         gl.LINEAR_MIPMAP_LINEAR, 
         gl.LINEAR);
 
