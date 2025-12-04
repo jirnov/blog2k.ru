@@ -188,8 +188,8 @@ function loadTexture(url) {
 }
  
  
-function startRender() {
-    var canvas = document.getElementById("webgl-canvas");
+function main(canvasName) {
+    var canvas = document.getElementById(canvasName);
  
     canvas.onmousemove = function(event) {
         var bbox = canvas.getBoundingClientRect();
@@ -248,6 +248,7 @@ function startRender() {
     render();
 }
 
-window.onload = function(e) {
-    startRender();
-};
+window.LightDemo = window.LightDemo || {};
+window.LightDemo.startRender = function(canvasName) {
+    main(canvasName);
+}
