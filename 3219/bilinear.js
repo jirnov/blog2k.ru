@@ -124,7 +124,7 @@ function render() {
 
 }
 
-function startRender(canvasName) {
+window.startRender = function(canvasName) {
     canvas = document.getElementById(canvasName);
     context = canvas.getContext("2d");
 
